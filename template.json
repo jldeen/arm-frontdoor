@@ -1,0 +1,132 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "frontDoorName": {
+        "defaultValue": "fdd0a3e4",
+        "metadata": {
+          "description": "The name of the frontdoor resource."
+        },
+        "type": "string"
+      },
+      "host1_frontend": {
+        "defaultValue": "frontend-frontend.ec303fe593744d6f875c.eastus.aksapp.io",
+        "metadata": {
+          "description": "host1_frontend"
+        },
+        "type": "string"
+      },
+      "host1_frontend2": {
+        "defaultValue": "frontend-frontend.8841e7f81f7c4e4895b3.westus2.aksapp.io",
+        "metadata": {
+          "description": "host1_frontend"
+        },
+        "type": "string"
+      }
+    },
+    "resources": [
+      {
+        "apiVersion": "2018-08-01",
+        "location": "[variables('frontdoorLocation')]",
+        "name": "[parameters('frontDoorName')]",
+        "properties": {
+          "backendPools": [
+            {
+              "name": "frontend",
+              "properties": {
+                "backends": [
+                  {
+                    "address": "[parameters('host1_frontend')]",
+                    "backendHostHeader": "[parameters('host1_frontend')]",
+                    "enabledState": "Enabled",
+                    "httpPort": 80,
+                    "httpsPort": 443,
+                    "priority": 1,
+                    "weight": 50
+                  },
+                  {
+                    "address": "[parameters('host1_frontend2')]",
+                    "backendHostHeader": "[parameters('host1_frontend2')]",
+                    "enabledState": "Enabled",
+                    "httpPort": 80,
+                    "httpsPort": 443,
+                    "priority": 1,
+                    "weight": 50
+                  }
+                ],
+                "healthProbeSettings": {
+                  "id": "[concat(variables('frontdoorref'), '/healthProbeSettings/', 'healthProbeSettings-frontend')]"
+                },
+                "loadBalancingSettings": {
+                  "id": "[concat(variables('frontdoorref'), '/loadBalancingSettings/', 'loadBalancingSettings-frontend')]"
+                }
+              }
+            }
+          ],
+          "enabledState": "Enabled",
+          "frontendEndpoints": [
+            {
+              "name": "[concat(parameters('frontDoorName'), '-azurefd-net')]",
+              "properties": {
+                "hostName": "[concat(parameters('frontDoorName'), '.azurefd.net')]",
+                "sessionAffinityEnabledState": "Disabled",
+                "sessionAffinityTtlSeconds": 0
+              }
+            }
+          ],
+          "healthProbeSettings": [
+            {
+              "name": "healthProbeSettings-frontend",
+              "properties": {
+                "intervalInSeconds": 5,
+                "path": "/",
+                "protocol": "Http"
+              }
+            }
+          ],
+          "loadBalancingSettings": [
+            {
+              "name": "loadBalancingSettings-frontend",
+              "properties": {
+                "additionalLatencyMilliseconds": 0,
+                "sampleSize": 1,
+                "successfulSamplesRequired": 1
+              }
+            }
+          ],
+          "routingRules": [
+            {
+              "name": "frontend",
+              "properties": {
+                "acceptedProtocols": [
+                  "Http",
+                  "Https"
+                ],
+                "backendPool": {
+                  "id": "[concat(variables('frontdoorref'), '/backendPools/', 'frontend')]"
+                },
+                "customForwardingPath": "/",
+                "enabledState": "Enabled",
+                "forwardingProtocol": "HttpOnly",
+                "frontendEndpoints": [
+                  {
+                    "id": "[concat(variables('frontdoorref'), '/frontendEndpoints/', parameters('frontDoorName'), '-azurefd-net')]"
+                  }
+                ],
+                "patternsToMatch": [
+                  "/*"
+                ]
+              }
+            }
+          ]
+        },
+        "tags": {},
+        "type": "Microsoft.Network/frontDoors"
+      }
+    ],
+    "variables": {
+      "frontdoorLocation": "global",
+      "frontdoorref": "[resourceId('Microsoft.Network/frontDoors', parameters('frontDoorName'))]"
+    }
+  }
+  
