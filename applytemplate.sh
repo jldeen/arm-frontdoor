@@ -1,11 +1,11 @@
 #!/bin/bash
 set -eou pipefail
 
-rg=frontdoorjd
-location=eastus
-fdname=jdfd
-fdfrontend=deenofdevops.azurewebsites.net
-fdfrontend2=deenofdevops-dev.azurewebsites.net
+rg=resource-group-name
+location=location-here
+fdname=front-door-name
+fdfrontend=frontdoor-backendaddress-1
+fdfrontend2=frontdoor-backaddress-2
 
 az group create -n $rg -l $location
 

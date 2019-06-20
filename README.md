@@ -2,7 +2,17 @@
 
 ## ARM Template
 
-To use this script, you will need to fill in the variables in the `applytemplate.sh` script. You may also need to make the appropriate edits to the `template.json` for the Azure Frontdoor infra setup. Settings you may need to edit are lines 41-45 for frontend host1:
+To use this script, you will need to fill in the variables in the `applytemplate.sh` script.
+The predefined variables are:
+```
+rg=resource-group-name
+location=location-here
+fdname=front-door-name
+fdfrontend=frontdoor-backendaddress-1
+fdfrontend2=frontdoor-backaddress-2
+```
+
+You may also need to make the appropriate edits to the `template.json` for the Azure Frontdoor infra setup. Settings you may need to edit are lines 41-45 for frontend host1:
 
 ```json
 "enabledState": "Enabled",
