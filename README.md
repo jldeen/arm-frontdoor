@@ -23,15 +23,18 @@ and lines 50-54 for frontend host2:
 
 This will create a Front Door that looks like this:
 
-![Front_Door Designer](images/template/designer.png)
+<img src="images/template/designer.png">
+<!-- ![Front_Door Designer](images/template/designer.png) -->
 
 Your backend will look like this:
 
-![backend](images/template/backend.png)
+<img src="images/template/backend.png" height="300">
+<!-- ![backend](images/template/backend.png) -->
 
 Your routing rules will look like this:
 
-![routing-rules](images/template/routingrules.png)
+<img src="images/template/routingrules.png" height="300">
+<!-- ![routing-rules](images/template/routingrules.png) -->
 
 ## Azure CLI
 
@@ -62,8 +65,10 @@ This will create a Front Door that looks like this:
 
 Your backend will look like this:
 
-![backend](images/cli/backend.png)
+<img src="images/cli/backend.png" height="300">
+<!-- ![backend](images/cli/backend.png) -->
 
 Your routing rules will look like this:
 
-![routing-rules](images/cli/routingrules.png)
+<img src="images/cli/routingrules.png" height="300">
+<!-- ![routing-rules](images/cli/routingrules.png) -->
