@@ -4,8 +4,8 @@ set -eou pipefail
 rg=resource-group-name
 location=location-here
 fdname=front-door-name
-fdfrontend=frontdoor-backendaddress-1
-fdfrontend2=frontdoor-backaddress-2
+fdfrontend=frontdoor-backend-address-1
+fdfrontend2=frontdoor-backend-address-2
 
 az group create -n $rg -l $location
 
