@@ -28,12 +28,12 @@ This will create a Front Door that looks like this:
 
 Your backend will look like this:
 
-<img src="images/template/backend.png" height="300">
+<img src="images/template/backend.png" height="500">
 <!-- ![backend](images/template/backend.png) -->
 
 Your routing rules will look like this:
 
-<img src="images/template/routingrules.png" height="300">
+<img src="images/template/routingrules.png" height="500">
 <!-- ![routing-rules](images/template/routingrules.png) -->
 
 ## Azure CLI
@@ -65,10 +65,10 @@ This will create a Front Door that looks like this:
 
 Your backend will look like this:
 
-<img src="images/cli/backend.png" height="300">
+<img src="images/cli/backend.png" height="500">
 <!-- ![backend](images/cli/backend.png) -->
 
 Your routing rules will look like this:
 
-<img src="images/cli/routingrules.png" height="300">
+<img src="images/cli/routingrules.png" height="500">
 <!-- ![routing-rules](images/cli/routingrules.png) -->
