@@ -50,7 +50,7 @@ Your routing rules will look like this:
 
 As of the time of this writing, you can create an Azure Frontdoor via Azure CLI with the frontdoor network extension only. To use this simply run `az extension add --name front-door`. This will take your azcli network module from version `2.5.1` to version `2.5.2` and provide you a new front-door azcli module of version `0.1.7`. I am using Azure CLI version `2.0.67`, which is the latest azcli version at this time, to test.
 
-Detailed documentation on Azure CLI FrontDoor commands can be found [here](https://docs.microsoft.com/en-us/cli/azure/ext/front-door/network/front-door?view=azure-cli-latest). The source code for the FrontDoor CLI extension can be found [here](https://github.com/Azure/azure-cli-extensions/tree/master/src/front-door).
+Detailed documentation on Azure CLI FrontDoor commands can be found [here](https://docs.microsoft.com/cli/azure/ext/front-door/network/front-door?view=azure-cli-latest&WT.mc_id=devops-0000-jessde). The source code for the FrontDoor CLI extension can be found [here](https://github.com/Azure/azure-cli-extensions/tree/master/src/front-door).
 
 Then, to create a simple frontdoor to one backend address, I used the following command:
 
